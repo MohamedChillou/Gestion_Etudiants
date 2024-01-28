@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    Double value;
+    private Long id;
+    private Double value;
     @ManyToOne
     private  Student student;
     @ManyToOne

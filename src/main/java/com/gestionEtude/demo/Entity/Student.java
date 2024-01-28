@@ -24,9 +24,16 @@ public class Student {
     private String password;
     private String codeAppoge;
     private String email;
-    @ManyToMany(mappedBy = "studentList")
+    @ManyToMany(mappedBy = "studentList",fetch = FetchType.EAGER)
     private List<Module> moduleList = new ArrayList<>();
     @OneToMany(mappedBy = "student")
     private  List<Note> noteList = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "studentList",fetch = FetchType.EAGER)
+    private List<Semester> semesterList = new ArrayList<>();
+
+    @OneToOne
+    private  Role role;
+
 
 }
