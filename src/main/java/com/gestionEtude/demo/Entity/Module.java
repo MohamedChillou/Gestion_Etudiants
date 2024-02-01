@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder
-@Table(name = "modl")
+@Table
 public class Module {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

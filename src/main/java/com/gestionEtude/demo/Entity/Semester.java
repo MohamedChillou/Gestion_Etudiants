@@ -13,6 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
+@Table
+
 public class Semester {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

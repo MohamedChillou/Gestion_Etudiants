@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder
+@Table
 public class Teacher {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
