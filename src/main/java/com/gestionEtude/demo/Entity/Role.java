@@ -16,9 +16,6 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(unique = true)
     String role;
-    @OneToOne(mappedBy = "role")
-    private Teacher teacher;
-    @OneToOne(mappedBy = "role")
-    private  Student student;
 }
