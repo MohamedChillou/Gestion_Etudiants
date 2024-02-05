@@ -27,5 +27,7 @@ public interface AllServices {
     Module updateModule(Module module);
     List<Module> getAllModule();
     void deleteModule(Long id);
+    void addModuleToStudent(Long idModule,Long idStudent);
+
 
 }

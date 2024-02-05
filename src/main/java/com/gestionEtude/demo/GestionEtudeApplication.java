@@ -6,6 +6,7 @@ import com.gestionEtude.demo.Entity.Student;
 import com.gestionEtude.demo.Repository.ModuleRepo;
 import com.gestionEtude.demo.Repository.RoleRepo;
 import com.gestionEtude.demo.Repository.StudentRepo;
+import com.gestionEtude.demo.Service.AllServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,39 +23,18 @@ private StudentRepo studentRepo;
 private RoleRepo roleRepo;
 @Autowired
 private ModuleRepo moduleRepo;
+@Autowired
+private AllServices services ;
+
 	public static void main(String[] args) {
 		SpringApplication.run(GestionEtudeApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		/*
-		Student student =  Student.builder()
-				.firstName("Chillou")
-				.codeAppoge("A2435F34")
-				.LastName("Mohamed")
-				.password("HayHay")
-				.telephone("0666818992")
-				.email("chilloumohamed@gmail.com")
-				.build();
-		student = studentRepo.save(student);
 
-		Role role = Role.builder()
-				.role("Student")
-				.build();
-		role = roleRepo.save(role);
-		student.setRole(role);
-		studentRepo.save(student);
-		Module module = Module.builder()
-				.name("JEE")
-				.build();
-		module = moduleRepo.save(module);
-		if (module.getStudentList() == null) {
-			module.setStudentList(new ArrayList<>());
-		}
-		module.getStudentList().add(student);
-		moduleRepo.save(module);
-		 */
+
+
 
 
 	}

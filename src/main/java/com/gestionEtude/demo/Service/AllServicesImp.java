@@ -11,10 +11,11 @@ import com.gestionEtude.demo.Repository.TeacherRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AllServicesImp implements  AllServices{
+public class AllServicesImp implements AllServices{
     @Autowired
     private StudentRepo studentRepo;
     @Autowired
@@ -112,6 +113,18 @@ public class AllServicesImp implements  AllServices{
     @Override
     public void deleteModule(Long id) {
         moduleRepo.deleteById(id);
+    }
+
+    @Override
+    public void addModuleToStudent(Long idModule, Long idStudent) {
+        Student student = studentRepo.findById(idStudent).get();
+        Module module =  moduleRepo.findById(idModule).get();
+        if (module.getStudentList() == null) {
+            module.setStudentList(new ArrayList<>());
+        }
+        module.getStudentList().add(student);
+        moduleRepo.save(module);
+
     }
 
 

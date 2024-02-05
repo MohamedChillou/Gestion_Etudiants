@@ -93,4 +93,8 @@ public class controller {
     public void deleteModule(@PathVariable  Long id){
         services.deleteModule(id);
     }
+    @PostMapping("/ajouteModuleEtudiant")
+    public void addModuleToStudent(@RequestBody Map<String,Long> infos){
+        services.addModuleToStudent(infos.get("idModule"),infos.get("idStudent") );
+    }
 }

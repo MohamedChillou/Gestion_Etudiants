@@ -20,7 +20,7 @@ public class Module {
     private Long id;
     @Column(name = "name_module",unique = true)
     private String name;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Student> studentList = new ArrayList<>();
     @OneToMany(mappedBy = "module")
     private List<Note> noteList = new ArrayList<>();
