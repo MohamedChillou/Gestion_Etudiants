@@ -1,5 +1,6 @@
 package com.gestionEtude.demo.Controller;
 
+import com.gestionEtude.demo.Entity.Module;
 import com.gestionEtude.demo.Entity.Role;
 import com.gestionEtude.demo.Entity.Student;
 import com.gestionEtude.demo.Entity.Teacher;
@@ -75,5 +76,21 @@ public class controller {
     public Teacher addRoleToTeacher(@RequestBody Map<String,Long> infos){
         return services.addRoleToTeacher(infos.get("idEnsg"),infos.get("idRole"));
     }
+    @GetMapping("/Modules")
+    public List<Module> getAllModule(){
+        return services.getAllModule();
+    }
+    @PostMapping("/ajouteModule")
+    public Module addModel(@RequestBody Module module){
+        return services.addModule(module);
+    }
+    @PutMapping("/modifierModule")
+    public Module updateModule(@RequestBody Module module){
+        return services.updateModule(module);
+    }
 
+    @DeleteMapping("/supprimerModule/{id}")
+    public void deleteModule(@PathVariable  Long id){
+        services.deleteModule(id);
+    }
 }

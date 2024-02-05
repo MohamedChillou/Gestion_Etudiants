@@ -4,6 +4,7 @@ import com.gestionEtude.demo.Entity.Module;
 import com.gestionEtude.demo.Entity.Role;
 import com.gestionEtude.demo.Entity.Student;
 import com.gestionEtude.demo.Entity.Teacher;
+import com.gestionEtude.demo.Repository.ModuleRepo;
 import com.gestionEtude.demo.Repository.RoleRepo;
 import com.gestionEtude.demo.Repository.StudentRepo;
 import com.gestionEtude.demo.Repository.TeacherRepo;
@@ -20,6 +21,8 @@ public class AllServicesImp implements  AllServices{
     private RoleRepo roleRepo;
     @Autowired
     private TeacherRepo teacherRepo;
+    @Autowired
+    private ModuleRepo moduleRepo;
     @Override
     public Student addStudent(Student student) {
         return  studentRepo.save(student);
@@ -93,7 +96,23 @@ public class AllServicesImp implements  AllServices{
 
     @Override
     public Module addModule(Module module) {
-        return null;
+        return moduleRepo.save(module);
     }
+
+    @Override
+    public Module updateModule(Module module) {
+        return moduleRepo.save(module);
+    }
+
+    @Override
+    public List<Module> getAllModule() {
+        return moduleRepo.findAll();
+    }
+
+    @Override
+    public void deleteModule(Long id) {
+        moduleRepo.deleteById(id);
+    }
+
 
 }

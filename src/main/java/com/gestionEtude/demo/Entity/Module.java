@@ -18,7 +18,7 @@ public class Module {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name_module")
+    @Column(name = "name_module",unique = true)
     private String name;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Student> studentList = new ArrayList<>();

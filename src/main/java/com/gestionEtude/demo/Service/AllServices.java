@@ -24,5 +24,8 @@ public interface AllServices {
     void deleteTeacher(Long id);
     Teacher addRoleToTeacher(Long idTeacher,Long idRole);
     Module addModule(Module module);
+    Module updateModule(Module module);
+    List<Module> getAllModule();
+    void deleteModule(Long id);
 
 }
