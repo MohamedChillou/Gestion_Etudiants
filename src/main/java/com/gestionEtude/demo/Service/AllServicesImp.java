@@ -124,7 +124,6 @@ public class AllServicesImp implements AllServices{
         }
         module.getStudentList().add(student);
         moduleRepo.save(module);
-
     }
 
 
