@@ -1,9 +1,7 @@
 package com.gestionEtude.demo.Service;
 
+import com.gestionEtude.demo.Entity.*;
 import com.gestionEtude.demo.Entity.Module;
-import com.gestionEtude.demo.Entity.Role;
-import com.gestionEtude.demo.Entity.Student;
-import com.gestionEtude.demo.Entity.Teacher;
 
 import java.awt.*;
 import java.util.List;
@@ -28,6 +26,13 @@ public interface AllServices {
     List<Module> getAllModule();
     void deleteModule(Long id);
     void addModuleToStudent(Long idModule,Long idStudent);
+    Module addModuleToTeacher(Long idModule, Long idTeacher);
+    Semester addSemester(Semester semester);
+    Semester updateSemester(Semester semester);
+    List<Semester> getAllSemester();
+    void deleteSemester(Long id);
+    Module addModuleToSemester(Long idModule,Long idSemester);
+    Semester addStudentToSemester(Long iStudent,Long idSemester);
 
 
 }

@@ -1,5 +1,6 @@
 package com.gestionEtude.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +24,7 @@ public class Teacher {
     private String password;
     private String codeProf;
     private String email;
+    @JsonIgnoreProperties("teacher")
     @OneToMany(mappedBy = "teacher")
     private List<Module> moduleList = new ArrayList<>();
     @ManyToMany(fetch = FetchType.EAGER , mappedBy = "teacherList")

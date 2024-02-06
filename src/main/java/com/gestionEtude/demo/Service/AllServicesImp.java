@@ -1,13 +1,8 @@
 package com.gestionEtude.demo.Service;
 
+import com.gestionEtude.demo.Entity.*;
 import com.gestionEtude.demo.Entity.Module;
-import com.gestionEtude.demo.Entity.Role;
-import com.gestionEtude.demo.Entity.Student;
-import com.gestionEtude.demo.Entity.Teacher;
-import com.gestionEtude.demo.Repository.ModuleRepo;
-import com.gestionEtude.demo.Repository.RoleRepo;
-import com.gestionEtude.demo.Repository.StudentRepo;
-import com.gestionEtude.demo.Repository.TeacherRepo;
+import com.gestionEtude.demo.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +19,8 @@ public class AllServicesImp implements AllServices{
     private TeacherRepo teacherRepo;
     @Autowired
     private ModuleRepo moduleRepo;
+    @Autowired
+    private SemesterRepo semesterRepo;
     @Override
     public Student addStudent(Student student) {
         return  studentRepo.save(student);
@@ -124,6 +121,53 @@ public class AllServicesImp implements AllServices{
         }
         module.getStudentList().add(student);
         moduleRepo.save(module);
+    }
+
+    @Override
+    public Module addModuleToTeacher(Long idModule, Long idTeacher) {
+        Teacher teacher = teacherRepo.findById(idTeacher).get();
+        Module module = moduleRepo.findById(idModule).get();
+        module.setTeacher(teacher);
+        return moduleRepo.save(module);
+    }
+
+    @Override
+    public Semester addSemester(Semester semester) {
+        return semesterRepo.save(semester);
+    }
+
+    @Override
+    public Semester updateSemester(Semester semester) {
+        return semesterRepo.save(semester);
+    }
+
+    @Override
+    public List<Semester> getAllSemester() {
+        return semesterRepo.findAll();
+    }
+
+    @Override
+    public void deleteSemester(Long id) {
+        semesterRepo.deleteById(id);
+    }
+
+    @Override
+    public Module addModuleToSemester(Long idModule, Long idSemester) {
+        Semester semester = semesterRepo.findById(idSemester).get();
+        Module module = moduleRepo.findById(idModule).get();
+        module.setSemester(semester);
+        return moduleRepo.save(module);
+    }
+
+    @Override
+    public Semester addStudentToSemester(Long iStudent, Long idSemester) {
+        Semester semester = semesterRepo.findById(idSemester).get();
+        Student student = studentRepo.findById(iStudent).get();
+        if (semester.getStudentList() == null) {
+            semester.setStudentList(new ArrayList<>());
+        }
+        semester.getStudentList().add(student);
+        return semesterRepo.save(semester);
     }
 
 

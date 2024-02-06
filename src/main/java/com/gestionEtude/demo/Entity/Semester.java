@@ -1,5 +1,6 @@
 package com.gestionEtude.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,8 +21,10 @@ public class Semester {
     private Long id;
     @Column(name = "name_semester")
     private String name;
+    @JsonIgnoreProperties({"semester", "studentList"})
     @OneToMany(mappedBy = "semester")
     List<Module> moduleList = new ArrayList<>();
+    @JsonIgnoreProperties({"semesterList", "moduleList"})
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Student> studentList = new ArrayList<>();
 

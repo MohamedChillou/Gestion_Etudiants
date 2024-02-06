@@ -26,12 +26,14 @@ public class Module {
     private List<Student> studentList = new ArrayList<>();
     @OneToMany(mappedBy = "module")
     private List<Note> noteList = new ArrayList<>();
+    @JsonIgnoreProperties("moduleList")
     @ManyToOne
     private  Semester semester;
     @OneToMany(mappedBy = "module")
     private  List<TP> tpList = new ArrayList<>();
     @OneToMany
     private  List<Course> courseList = new ArrayList<>();
+    @JsonIgnoreProperties("moduleList")
     @ManyToOne
     private Teacher teacher ;
 }
