@@ -170,5 +170,16 @@ public class AllServicesImp implements AllServices{
         return semesterRepo.save(semester);
     }
 
+    @Override
+    public Semester addTeacherToSemester(Long idTeacher, Long idSemester) {
+        Semester semester = semesterRepo.findById(idSemester).get();
+        Teacher teacher = teacherRepo.findById(idTeacher).get();
+        if (semester.getTeacherList() == null) {
+            semester.setTeacherList(new ArrayList<>());
+        }
+        semester.getTeacherList().add(teacher);
+        return semesterRepo.save(semester);
+    }
+
 
 }

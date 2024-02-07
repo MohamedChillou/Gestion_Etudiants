@@ -130,4 +130,9 @@ public class controller {
     public Semester addStudentToSemester(@RequestBody Map<String,Long> infos){
         return services.addStudentToSemester(infos.get("iStudent"),infos.get("idSemester"));
     }
+
+    @PostMapping("/ajouteSemesterTeacher")
+    public Semester addTeacherToSemester(@RequestBody Map<String,Long> infos){
+        return services.addStudentToSemester(infos.get("idTeacher"),infos.get("idSemester"));
+    }
 }

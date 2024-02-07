@@ -1,6 +1,7 @@
 package com.gestionEtude.demo.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +16,7 @@ import java.util.List;
 @Data
 @Builder
 @Table
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Teacher {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -24,7 +26,6 @@ public class Teacher {
     private String password;
     private String codeProf;
     private String email;
-    @JsonIgnoreProperties("teacher")
     @OneToMany(mappedBy = "teacher")
     private List<Module> moduleList = new ArrayList<>();
     @ManyToMany(fetch = FetchType.EAGER , mappedBy = "teacherList")

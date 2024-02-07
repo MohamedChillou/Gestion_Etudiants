@@ -33,6 +33,6 @@ public interface AllServices {
     void deleteSemester(Long id);
     Module addModuleToSemester(Long idModule,Long idSemester);
     Semester addStudentToSemester(Long iStudent,Long idSemester);
-
+    Semester addTeacherToSemester(Long idTeacher,Long idSemester);
 
 }

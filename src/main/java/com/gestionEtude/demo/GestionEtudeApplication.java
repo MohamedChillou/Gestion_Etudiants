@@ -32,10 +32,5 @@ private AllServices services ;
 
 	@Override
 	public void run(String... args) throws Exception {
-
-
-
-
-
 	}
 }
