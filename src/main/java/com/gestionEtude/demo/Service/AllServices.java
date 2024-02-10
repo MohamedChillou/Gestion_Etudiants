@@ -34,5 +34,8 @@ public interface AllServices {
     Module addModuleToSemester(Long idModule,Long idSemester);
     Semester addStudentToSemester(Long iStudent,Long idSemester);
     Semester addTeacherToSemester(Long idTeacher,Long idSemester);
-
+    Note addNoteToStudent(Long idStudent , Long idModule ,double value);
+    List<Note> getAllNote();
+    Note updateNote(Long idNote,double value);
+    void deleteNote(Long id);
 }

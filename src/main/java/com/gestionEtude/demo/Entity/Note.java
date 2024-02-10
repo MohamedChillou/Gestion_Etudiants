@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @Table
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -135,4 +135,20 @@ public class controller {
     public Semester addTeacherToSemester(@RequestBody Map<String,Long> infos){
         return services.addStudentToSemester(infos.get("idTeacher"),infos.get("idSemester"));
     }
+    @PostMapping("/ajouteNote")
+    public Note addNoteToStudent(@RequestBody Map<String,String> infos){
+        return services.addNoteToStudent(Long.parseLong(infos.get("idStudent")),Long.parseLong(infos.get("idModule")),Double.parseDouble(infos.get("value")));
+    }
+    @GetMapping("/Notes")
+    public List<Note> getAllNote(){
+        return services.getAllNote();
+    }
+    @PutMapping("/modifierNote")
+    public Note updateNote(@RequestBody  Map<String,String> infos){
+     return services.updateNote(Long.parseLong(infos.get("idNote")),Double.parseDouble(infos.get("value")));
+    }
+    @DeleteMapping("/supprimerNote/{id}")
+    public void deleteNote(@PathVariable Long id){
+        services.deleteNote(id);
+    }
 }

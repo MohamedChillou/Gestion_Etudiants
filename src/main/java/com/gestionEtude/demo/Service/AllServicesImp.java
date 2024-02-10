@@ -21,6 +21,8 @@ public class AllServicesImp implements AllServices{
     private ModuleRepo moduleRepo;
     @Autowired
     private SemesterRepo semesterRepo;
+    @Autowired
+    private NoteRepo noteRepo;
     @Override
     public Student addStudent(Student student) {
         return  studentRepo.save(student);
@@ -179,6 +181,35 @@ public class AllServicesImp implements AllServices{
         }
         semester.getTeacherList().add(teacher);
         return semesterRepo.save(semester);
+    }
+
+    @Override
+    public Note addNoteToStudent(Long idStudent, Long idModule, double value) {
+        Module module = moduleRepo.findById(idModule).get();
+        Student student = studentRepo.findById(idStudent).get();
+        Note note = Note.builder()
+                .value(value)
+                .student(student)
+                .module(module)
+                .build();
+        return noteRepo.save(note);
+    }
+
+    @Override
+    public List<Note> getAllNote() {
+        return noteRepo.findAll();
+    }
+
+    @Override
+    public Note updateNote(Long idNote,double value) {
+        Note note = noteRepo.findById(idNote).get();
+        note.setValue(value);
+        return noteRepo.save(note);
+    }
+
+    @Override
+    public void deleteNote(Long id) {
+        noteRepo.deleteById(id);
     }
 
 
